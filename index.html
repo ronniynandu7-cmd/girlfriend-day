@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Happy Girlfriend's Day, My Princess</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #12395a, transparent 40%),
+        radial-gradient(circle at bottom right, #006b75, transparent 40%),
+        #031b2b;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    section {
+      padding: 90px 20px;
+    }
+
+    .container {
+      width: min(1050px, 100%);
+      margin: auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(2, 20, 32, 0.45), rgba(2, 20, 32, 0.88)),
+        url("images/hero.jpg") center/cover no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        #031b2b 100%
+      );
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .small-heading {
+      font-size: 20px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #93f4ee;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      text-shadow: 0 0 25px rgba(46, 220, 210, 0.5);
+    }
+
+    .hero-message {
+      font-size: clamp(18px, 3vw, 25px);
+      line-height: 1.7;
+      color: #d8fffc;
+      max-width: 700px;
+      margin: 0 auto 35px;
+    }
+
+    .scroll-button,
+    .surprise-button {
+      display: inline-block;
+      border: none;
+      text-decoration: none;
+      background: linear-gradient(135deg, #14b8a6, #28d7cf);
+      color: #031b2b;
+      padding: 16px 30px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(40, 215, 207, 0.3);
+      transition: 0.3s;
+    }
+
+    .scroll-button:hover,
+    .surprise-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(40, 215, 207, 0.45);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(36px, 6vw, 55px);
+      color: #7df4ed;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      max-width: 700px;
+      margin: 0 auto 45px;
+      text-align: center;
+      color: #b9dedc;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .letter {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(125, 244, 237, 0.25);
+      border-radius: 28px;
+      padding: 45px;
+      line-height: 1.9;
+      font-size: 18px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .letter strong {
+      color: #7df4ed;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .story-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+    }
+
+    .story-card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 35px;
+      border-radius: 25px;
+      border-left: 5px solid #24d8ce;
+    }
+
+    .story-card h3 {
+      color: #7df4ed;
+      font-size: 30px;
+    }
+
+    .story-card p {
+      color: #d8eeee;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .memory-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .memory {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 360px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+    }
+
+    .memory img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .memory:hover img {
+      transform: scale(1.07);
+    }
+
+    .memory-caption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 55px 22px 22px;
+      background: linear-gradient(transparent, rgba(0, 20, 30, 0.95));
+    }
+
+    .memory-caption h3 {
+      margin-bottom: 5px;
+      color: #8ffff8;
+    }
+
+    .memory-caption p {
+      margin: 0;
+      color: white;
+    }
+
+    .qualities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .quality {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(125, 244, 237, 0.18);
+      border-radius: 22px;
+      padding: 30px 24px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .quality:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.13);
+    }
+
+    .quality-icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .quality h3 {
+      color: #84fff7;
+      margin-bottom: 10px;
+    }
+
+    .quality p {
+      color: #c9e6e4;
+      line-height: 1.6;
+    }
+
+    .surprise-section {
+      text-align: center;
+      padding-bottom: 120px;
+    }
+
+    #surpriseMessage {
+      display: none;
+      max-width: 750px;
+      margin: 35px auto 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 40px;
+      font-size: 22px;
+      line-height: 1.7;
+      color: #dffffc;
+      animation: fadeUp 1s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      color: #a9d4d1;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      animation: floatHeart linear forwards;
+      z-index: 100;
+    }
+
+    @keyframes floatHeart {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+      }
+
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-image {
+        height: 420px;
+      }
+
+      .qualities {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 70px 16px;
+      }
+
+      .letter {
+        padding: 28px 22px;
+      }
+
+      .memory-gallery,
+      .qualities {
+        grid-template-columns: 1fr;
+      }
+
+      .memory,
+      .memory img {
+        min-height: 430px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="small-heading">To My Princess</p>
+
+      <h1>Happy Girlfriend's Day 💙</h1>
+
+      <p class="hero-message">
+        This little corner of the internet is just for you,
+        because you deserve to know how loved, appreciated,
+        and special you truly are.
+      </p>
+
+      <a class="scroll-button" href="#letter">
+        Open Your Love Letter
+      </a>
+    </div>
+  </section>
+
+  <section id="letter">
+    <div class="container">
+      <h2 class="section-title">A Letter for You</h2>
+
+      <p class="section-subtitle">
+        There are so many things I want to thank you for,
+        and this is only a small attempt to put them into words.
+      </p>
+
+      <div class="letter">
+        <p>My Princess,</p>
+
+        <p>
+          Happy Girlfriend's Day to the person who brings so much
+          happiness, love, laughter, and peace into my life.
+        </p>
+
+        <p>
+          Thank you for everything. Thank you for your kindness,
+          your care, your love, and the way you always support me.
+          Thank you for understanding me, even during the moments
+          when I struggle to explain myself.
+        </p>
+
+        <p>
+          I love how funny you are and how easily you can make me
+          smile. Life feels lighter and happier because you are in it.
+          You have a way of making ordinary moments feel special,
+          simply because I get to experience them with you.
+        </p>
+
+        <p>
+          From meeting in college to all the dates, trips, adventures,
+          jokes, conversations, and memories we have shared, I am so
+          grateful for every part of our story.
+        </p>
+
+        <p>
+          Being with you has shown me what it feels like to have
+          someone who truly cares, supports me, understands me,
+          and makes me excited about the future.
+        </p>
+
+        <p>
+          <strong>
+            Thank you for being you, and thank you for choosing me.
+          </strong>
+        </p>
+
+        <p>
+          I love you, My Princess. 💙
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Where It All Began</h2>
+
+      <p class="section-subtitle">
+        Two people met in college, and the beginning of something
+        beautiful quietly started.
+      </p>
+
+      <div class="story-grid">
+        <img
+          class="story-image"
+          src="images/meet.jpg"
+          alt="An early memory together"
+        />
+
+        <div class="story-card">
+          <h3>Our College Story</h3>
+
+          <p>
+  When we first met in college, I had a feeling you were going to be someone special. Even though I know I messed up at times, I truly believe everything we went through only made us realize how much we wanted to be with each other.
+</p>
+
+<p>
+  I'll always cherish all the laughs we shared, our late night walks, and all the crazy things I would do just to spend a little more time with you. Looking back now, those moments were some of the most fun and unforgettable memories of my life. I never imagined I could fall this deeply in love with someone.
+</p>
+
+<p>
+  And I will always be grateful that I asked you out on August 26, 2023. My life has been completely different ever since. You've brought so much happiness, love, and meaning into my life, and I wouldn't trade our journey together for anything. I can't wait to make even more memories with you.
+</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Our Puerto Rico Adventure</h2>
+
+      <p class="section-subtitle">
+        One of my favorite memories because it showed me how much
+        adventure, happiness, and love our future can hold.
+      </p>
+
+      <div class="story-grid">
+        <div class="story-card">
+          <h3>San Juan, Puerto Rico</h3>
+
+          <p>
+            Our trip to San Juan was one of my favorite adventures
+            together. We spent time at beautiful beaches, explored
+            new places, and created memories that I will always treasure.
+          </p>
+
+          <p>
+            One of the moments I remember most was visiting the
+            rainforest, jumping from cliffs into the freezing cold
+            water, and encouraging you to take the leap from the bridge.
+          </p>
+
+          <p>
+            The photos we took, the fun we had at the beach, and all
+            the little moments in between showed me the kind of life
+            I would love to build with you.
+          </p>
+
+          <p>
+            A life filled with love, laughter, travel, courage,
+            and unforgettable adventures.
+          </p>
+        </div>
+
+        <img
+          class="story-image"
+          src="images/trip.jpg"
+          alt="Our Puerto Rico adventure"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Some of Our Memories</h2>
+
+      <p class="section-subtitle">
+        Every photo holds a moment that I am grateful we shared.
+      </p>
+
+      <div class="memory-gallery">
+
+        <div class="memory">
+          <img src="images/date1.jpg" alt="A favorite date" />
+
+          <div class="memory-caption">
+            <h3>Favorite Dates</h3>
+            <p>This in my eyes is our first technical date. Just so magical.</p>
+          </div>
+        </div>
+
+        <div class="memory">
+          <img src="images/trip.jpg" alt="Our favorite trip" />
+
+          <div class="memory-caption">
+            <h3>Our Adventure</h3>
+            <p>Exploring Puerto Rico together.</p>
+          </div>
+        </div>
+
+        <div class="memory">
+          <img src="images/trip1.jpg" alt="Another trip memory" />
+
+          <div class="memory-caption">
+            <h3>Beach Memories</h3>
+            <p>A glimpse of the beautiful life I imagine with you.</p>
+          </div>
+        </div>
+
+        <div class="memory">
+          <img src="images/funny.jpg" alt="A funny memory together" />
+
+          <div class="memory-caption">
+            <h3> Your Funny Photo</h3>
+            <p>Well not really funny but rather cute. I just wanted to put it here.</p>
+          </div>
+        </div>
+
+        <div class="memory">
+          <img src="images/recent.jpg" alt="A recent picture together" />
+
+          <div class="memory-caption">
+            <h3>Us Recently</h3>
+            <p>Things have not been the best lately, but I cannot imagine a world without you.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">What I Love About You</h2>
+
+      <p class="section-subtitle">
+        These are only a few of the countless things that make you
+        so special to me.
+      </p>
+
+      <div class="qualities">
+
+        <div class="quality">
+          <div class="quality-icon">💙</div>
+          <h3>Your Love</h3>
+          <p>
+            You make me feel cared for, valued, and loved.
+          </p>
+        </div>
+
+        <div class="quality">
+          <div class="quality-icon">🤍</div>
+          <h3>Your Kindness</h3>
+          <p>
+            Your caring heart is one of the most beautiful things
+            about you.
+          </p>
+        </div>
+
+        <div class="quality">
+          <div class="quality-icon">🫶</div>
+          <h3>Your Support</h3>
+          <p>
+            You stand by me and encourage me through every part of life.
+          </p>
+        </div>
+
+        <div class="quality">
+          <div class="quality-icon">✨</div>
+          <h3>Your Understanding</h3>
+          <p>
+            You understand me in a way that makes me feel safe
+            being myself.
+          </p>
+        </div>
+
+        <div class="quality">
+          <div class="quality-icon">😂</div>
+          <h3>Your Humor</h3>
+          <p>
+            You make me laugh and bring happiness into even the
+            simplest moments.
+          </p>
+        </div>
+
+        <div class="quality">
+          <div class="quality-icon">🌊</div>
+          <h3>Our Adventures</h3>
+          <p>
+            Every adventure with you makes me excited for everything
+            still ahead of us.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="surprise-section">
+    <div class="container">
+      <h2 class="section-title">One Last Thing</h2>
+
+      <p class="section-subtitle">
+        I have one final message for you.
+      </p>
+
+      <button class="surprise-button" onclick="showSurprise()">
+        Click for Your Surprise 💙
+      </button>
+
+      <div id="surpriseMessage">
+        My Princess, every date, every trip, every laugh, and every
+        adventure with you makes me more certain that you are the
+        person I want beside me as I build my future.
+
+        <br /><br />
+
+        Thank you for everything.
+
+        <br /><br />
+
+        Happy Girlfriend's Day. I love you. 💙
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Made with love, especially for My Princess 💙
+  </footer>
+
+  <script>
+    function showSurprise() {
+      const message = document.getElementById("surpriseMessage");
+      message.style.display = "block";
+
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      for (let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "💙" : "🩵";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 22 + 18 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(() => {
+      if (Math.random() > 0.55) {
+        createHeart();
+      }
+    }, 1500);
+  </script>
+
+</body>
+</html>
